@@ -1,50 +1,49 @@
 /**
  * Módulo de conexão com o banco de dados
  * Uso do framework mongoose
- * @author Gustavo Nunes Bispo
  */
 
-// Importação do mongoose
+// importação do mongoose
 const mongoose = require('mongoose')
 
-// Configuração do banco de dados
-// ip/link do servidor, autenticação
-// Ao final da url definir o nome do banco de dados
-// Exemplo: /dbclientes
+// configuração do banco de dados
+// ip/link do servidor, autenticação 
+// ao final da url definir o nome do banco de dados
+// exemplo: /dbclientes
 const url = 'mongodb+srv://admin:123Senac@cluster0.vi8rq.mongodb.net/dbclientes'
 
-// Validação (evitar a abertura de várias conexões)
+// validação (evitar a abertura de várias conexões)
 let conectado = false
 
-// Método para conectar com o banco de dados
+// método para conectar com o banco de dados
 const conectar = async () => {
-    // Se não estiver conectado
+    // se não estiver conectado
     if (!conectado) {
-        // Conectar com o banco de dados
+        //conectar com o banco de dados
         try {
-            await mongoose.connect(url) // Conectar
-            conectado = true // Setar a variável
-            console.log("MongoDB Conectado")
+            await mongoose.connect(url) //conectar
+            conectado = true //setar a variável
+            console.log("MongoDB conectado")
         } catch (error) {
             console.log(error)
         }
     }
 }
 
-// Método para desconectar com o banco de dados
+// método para desconectar do banco de dados
 const desconectar = async () => {
-    // Se estiver conectado
+    // se estiver conectado
     if (conectado) {
-        // Desconectar do banco de dados
+        // desconectar
         try {
-            await mongoose.disconnect(url) // Desconectar
-            conectado = false // Setar a variável
-            console.log("MongoDB Desconectado")
+            await mongoose.disconnect(url) //desconectar
+            conectado = false //setar a variável
+            console.log("MongoDB desconectado")
         } catch (error) {
             console.log(error)
         }
     }
 }
 
-// Exportar para o main os métodos conectar e desconectar
-module.exports = {conectar, desconectar}
+//exportar para o main os métodos conectar e desconectar
+module.exports = { conectar, desconectar }
