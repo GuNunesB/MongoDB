@@ -88,3 +88,7 @@ Classe modelo (abstração - herança - polimorfismo)
 - Criada pelo usuário usando class
 
 ---
+
+passo 7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Aprimorar a busco bom uso do pacote string-similarity
+npm i string-similarity
