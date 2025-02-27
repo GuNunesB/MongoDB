@@ -83,16 +83,56 @@ const buscarCliente = async (nome) => {
         console.log(error)
     }
 }
+// CRUD - UPDATE (Usa o ID para alterar dados)
+const atualizarCliente = async (id, nomeCli, foneCli, cpfCli) => {
+    try {
+        const cliente = await clienteModel.findByIdAndUpdate(
+            id,
+            {
+                nomeCliente: nomeCli,
+                foneCliente: foneCli,
+                cpf: cpfCli,
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        )
+        if (!cliente) {
+            console.log("Cliente não encontrado")
+        } else {
+            console.log("Dados alterados com sucesso")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// CRUD - DELETE (exclusão pelo id)
+const deletarCliente = async (id) => {
+    try {
+        const cliente = await clienteModel.findByIdAndDelete
+
+        if (!cliente) {
+            console.log("Cliente não encontrado")
+        } else {
+            console.log("Exclusão concluida")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 // execução da aplicação
 const app = async () => {
+
     await conectar()
     // CREATE - await criarCliente("Maria Lúcia", "99999-0000", "000.000.001-67")
     // READ - await listarClientes(), await buscarCliente("Mari")
-
-    await listarClientes()
-
+    // UPDATE - await atualizarCliente('67b904ed21f973a37731aae4', 'Mario Lúcio', '99999-0012', '909.090.909-67')
+    // DELETE - await deletarCliente('67b904ed21f973a37731aaed')
     await desconectar()
+    
 }
 
 console.clear()
